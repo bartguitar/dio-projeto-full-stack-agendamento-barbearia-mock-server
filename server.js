@@ -7,29 +7,12 @@ const directory = dirname(fileURLToPath(import.meta.url));
 const databasePath = join(directory, 'db.json');
 const port = Number(process.env.PORT || 1080);
 
-function toIsoDate(date) {
-  return new Date(date).toISOString();
-}
-
 function createInitialDatabase() {
-  const today = new Date();
-  const appointmentTime = (hour) => {
-    const date = new Date(today.getFullYear(), today.getMonth(), today.getDate(), hour, 0);
-    return toIsoDate(date);
-  };
-
   return {
-    clients: [
-      { id: 1, name: 'Joao Silva', email: 'joao@example.com', phone: '11987654321' },
-      { id: 2, name: 'Marcos Santos', email: 'marcos@example.com', phone: '11912345678' },
-      { id: 3, name: 'Pedro Oliveira', email: 'pedro@example.com', phone: '11999887766' }
-    ],
-    schedules: [
-      { id: 1, startAt: appointmentTime(9), endAt: appointmentTime(10), clientId: 1 },
-      { id: 2, startAt: appointmentTime(11), endAt: appointmentTime(12), clientId: 2 }
-    ],
-    nextClientId: 4,
-    nextScheduleId: 3
+    clients: [],
+    schedules: [],
+    nextClientId: 1,
+    nextScheduleId: 1
   };
 }
 
